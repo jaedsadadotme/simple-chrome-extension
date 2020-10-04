@@ -6,7 +6,17 @@ const getBlog = async (Tag) => {
       const response = await axios.get(`${api}`);
       let articles="";
       (response.data.datas).map(data=>{
-        articles+=`<a class="text-dark" target="_blank" href="https://jaedsada.me/${data.href}"><li>${data.name}</li></a>`;
+        articles+=`
+        <li>
+        <a class="text-dark" target="_blank" href="https://jaedsada.me/${data.href}">
+        ${data.name}
+        <br>
+        </a>
+        <a class="text-dark" target="_blank" href="https://jaedsada.me/blogs/${data.title}">
+        <span class="badge badge-info">${data.title}</span>
+        </a>
+        </li>
+        `;
       })
       results.innerHTML=articles;
     }
